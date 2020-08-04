@@ -1,0 +1,21 @@
+language: generic
+sudo: required
+services:
+   - docker
+
+before_install:
+   - docker build -t clorking/docker-ci-nodejs-test-client-test -f ./client/Dockerfile.dev ./client #naming...
+
+script:
+   - docker run clorking/docker-ci-nodejs-test-client-test -- --coverage
+
+after_success:
+   - docker build -t clorking/docker-ci-nodejs-test-client ./client
+   - docker build -t clorking/docker-ci-nodejs-test-nginx ./nginx
+   - docker build -t clorking/docker-ci-nodejs-test-server ./server
+   - docker build -t clorking/docker-ci-nodejs-test-worker ./worker
+   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+   - docker push clorking/docker-ci-nodejs-test-client
+   - docker push clorking/docker-ci-nodejs-test-nginx 
+   - docker push clorking/docker-ci-nodejs-test-server
+   - docker push clorking/docker-ci-nodejs-test-worker
