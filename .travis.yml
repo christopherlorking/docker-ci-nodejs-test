@@ -20,3 +20,16 @@ after_success:
    - docker push clorking/docker-ci-nodejs-test-nginx 
    - docker push clorking/docker-ci-nodejs-test-server
    - docker push clorking/docker-ci-nodejs-test-worker
+
+deploy:
+   provider: elasticbeanstalk
+   region: "ap-southeast-2"
+   app: "docker-cicd-nodejs-test"
+   env: "Docker-env"
+   bucket_name: "elasticbeanstalk-ap-southeast-2-067138989400"
+   # bucket_path: "docker-cicd-nodejs-test"
+   on:
+      branch: master
+   access_key_id: $AWS_ACCESS_KEY
+   secret_access_key:
+      secure: "$AWS_SECRET_KEY"

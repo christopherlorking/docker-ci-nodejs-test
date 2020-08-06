@@ -1,0 +1,37 @@
+{
+   "AWSEBDockerrunVersion": 2,
+   "containerDefinitions": [
+      {
+         "name": "client",
+         "image": "clorking/docker-ci-nodejs-test-client",
+         "hostname": "client",
+         "essential": false
+      },
+      {
+         "name": "server",
+         "image": "clorking/docker-ci-nodejs-test-server",
+         "hostname": "api",
+         "essential": false
+      },
+      {
+         "name": "worker",
+         "image": "clorking/docker-ci-nodejs-test-worker",
+         "hostname": "worker",
+         "essential": false
+      },
+      {
+         "name": "nginx",
+         "image": "clorking/docker-ci-nodejs-test-nginx",
+         "hostname": "nginx",
+         "essential": true,
+         "portMappings": [
+            {
+               "hostPort": 80,
+               "containerPort": 80
+            }
+         ],
+         "links": ["client", "server"]
+
+      }
+   ]
+}
