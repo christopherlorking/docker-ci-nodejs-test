@@ -26,7 +26,7 @@ deploy:
    provider: elasticbeanstalk
    region: ap-southeast-2
    app: docker-cicd-nodejs-test
-   env: DockerCicdNodejsTest-env
+   env: DockerCicdNodejsTest-env-1
    bucket_name: elasticbeanstalk-ap-southeast-2-067138989400
    bucket_path: docker-cicd-nodejs-test
    on:
