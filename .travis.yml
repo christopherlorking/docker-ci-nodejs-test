@@ -1,5 +1,6 @@
 language: generic
 sudo: required
+
 services:
    - docker
 
@@ -23,11 +24,11 @@ after_success:
 
 deploy:
    provider: elasticbeanstalk
-   region: "ap-southeast-2"
-   app: "docker-cicd-nodejs-test"
-   env: "DockerCicdNodejsTest-env"
-   bucket_name: "elasticbeanstalk-ap-southeast-2-067138989400"
-   # bucket_path: "docker-cicd-nodejs-test"
+   region: ap-southeast-2
+   app: docker-cicd-nodejs-test
+   env: DockerCicdNodejsTest-env
+   bucket_name: elasticbeanstalk-ap-southeast-2-067138989400
+   bucket_path: docker-cicd-nodejs-test
    on:
       branch: master
    access_key_id: $AWS_ACCESS_KEY
