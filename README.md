@@ -1,5 +1,5 @@
 # docker-cicd-nodejs-test
-[![Build Status](https://travis-ci.org/christopherlorking/docker-ci-nodejs-test.svg?branch=master)](https://travis-ci.org/christopherlorking/docker-ci-nodejs-test)
+[![Build Status](https://travis-ci.org/christopherlorking/docker-ci-nodejs-test.svg?branch=master)](https://travis-ci.org/christopherlorking/docker-cicd-nodejs-test)
 
 This is a test app that wraps a simple JavaScript Fibonacci-number-at-given-index calculator within:
 - Multiple Docker containers
